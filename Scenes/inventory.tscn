@@ -1,0 +1,81 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgvw2yxv3sh57"]
+
+[ext_resource type="FontFile" uid="uid://c2co8l7esnbmo" path="res://Fonts/VT323-Regular.ttf" id="1_wdn4f"]
+[ext_resource type="Texture2D" uid="uid://daaxejjq64153" path="res://Sprites/Misc/cardkey.png" id="2_k5gp2"]
+
+[sub_resource type="Theme" id="Theme_xek5a"]
+Panel/styles/panel = null
+
+[node name="Inventory" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Bag" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -220.5
+offset_top = -169.5
+offset_right = 220.5
+offset_bottom = 169.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_xek5a")
+
+[node name="TitleBorder" type="Panel" parent="Bag"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 38.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="Bag/TitleBorder"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -59.5
+offset_top = -17.0
+offset_right = 59.5
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_wdn4f")
+theme_override_font_sizes/font_size = 33
+text = "Inventory"
+
+[node name="Button" type="Button" parent="Bag/TitleBorder"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -34.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "X"
+
+[node name="TextureRect" type="TextureRect" parent="Bag"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -67.0
+offset_top = 10.0
+offset_right = 33.0
+offset_bottom = 110.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.69115037
+texture = ExtResource("2_k5gp2")

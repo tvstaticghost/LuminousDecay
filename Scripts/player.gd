@@ -1,0 +1,117 @@
+extends CharacterBody2D
+
+@onready var gun_aim_sound: AudioStreamPlayer = $"../GunAimSound"
+@onready var gun_shot_sound: AudioStreamPlayer = $"../GunShotSound"
+@onready var gun_reload_sound: AudioStreamPlayer = $"../GunReloadSound"
+@onready var interact_cast: RayCast2D = $InteractCast
+
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+@onready var camera_2d: Camera2D = $Camera2D
+@onready var muzzle_flash: Sprite2D = $MuzzleFlash
+@onready var muzzle_flash_timer: Timer = $MuzzleFlashTimer
+@onready var ejection_port: Marker2D = $EjectionPort
+const BULLET = preload("uid://nbhfnfyj62ph")
+
+@export var speed: float = 250
+@export var rotation_speed = 6
+@export var accel := 3000.0
+
+var can_walk: bool = true
+var walking: bool = false
+var is_aiming: bool = false
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass
+	
+func play_animation(animation: String):
+	animated_sprite_2d.play(animation)
+	
+func check_for_footsteps():
+	if animated_sprite_2d.animation == "walk":
+		if animated_sprite_2d.frame == 7 or animated_sprite_2d.frame == 3:
+			pass
+
+func get_input(delta: float):
+	var input_direction = Input.get_vector("left", "right", "up", "down")
+	var target_velocity = input_direction * speed
+	
+	if input_direction != Vector2.ZERO:
+		if animated_sprite_2d.animation == "aim":
+			play_animation("walk")
+			
+		if walking == false:
+			walking = true
+			play_animation("walk")
+		
+		velocity = velocity.move_toward(target_velocity, accel * delta)
+		rotation = lerp_angle(rotation, velocity.angle() + -PI/2, rotation_speed * delta)
+		
+		check_for_footsteps()
+	else:
+		walking = false
+		play_animation("idle")
+		velocity = Vector2.ZERO
+		
+func aiming(delta):
+	is_aiming = true
+	can_walk = false
+	velocity = Vector2.ZERO
+	var direction = get_global_mouse_position() - global_position
+	rotation = lerp_angle(rotation, direction.angle() + -PI/2, rotation_speed * delta)
+	if animated_sprite_2d.animation != "aim":
+		gun_aim_sound.play()
+		play_animation("aim")
+		
+		
+func fire_gun():
+	muzzle_flash_timer.start()
+	muzzle_flash.visible = true
+	gun_shot_sound.play()
+	var bullet_inst = BULLET.instantiate()
+	get_tree().root.add_child(bullet_inst)
+	bullet_inst.global_position = ejection_port.global_position
+	SignalManager.gun_fired.emit(-ejection_port.global_transform.x)
+	
+func handle_interact():
+	if interact_cast.is_colliding():
+		var hit = interact_cast.get_collider()
+		if hit != null and hit.is_in_group("Door"):
+			print("Hit a door!")
+			var parent_node = hit.get_parent().get_parent()
+			parent_node.test()
+	else:
+		print("Nothing to interact with")
+
+func _physics_process(delta: float) -> void:
+	if Input.is_action_just_pressed("interact"):
+		handle_interact()
+		
+	if Input.is_action_pressed("aim"):
+		aiming(delta)
+	else:
+		is_aiming = false
+		can_walk = true
+		
+	if Input.is_action_just_pressed("shoot"):
+		if !is_aiming:
+			return
+		
+		fire_gun()
+		
+	if can_walk:
+		get_input(delta)
+	move_and_slide()
+
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	print("animation finished")
+	if animated_sprite_2d.animation == "shoot":
+		if is_aiming:
+			play_animation("aim")
+
+
+func _on_muzzle_flash_timer_timeout() -> void:
+	muzzle_flash.visible = false
+	muzzle_flash_timer.stop()

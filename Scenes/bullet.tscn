@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://nbhfnfyj62ph"]
+
+[ext_resource type="Script" uid="uid://b55g2iq5iepi4" path="res://Scripts/bullet.gd" id="1_oduel"]
+[ext_resource type="Texture2D" uid="uid://cerbo4vf14g68" path="res://Sprites/Misc/bullet.png" id="1_xjght"]
+
+[node name="Bullet" type="Node2D"]
+z_index = -1
+script = ExtResource("1_oduel")
+
+[node name="BulletVisual" type="Sprite2D" parent="."]
+rotation = 3.1415927
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_xjght")

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7elxenyvom2v"]
+
+[ext_resource type="Texture2D" uid="uid://cxmykg8x3a6at" path="res://Sprites/LabEquipment/stool.png" id="1_7lt74"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7lt74"]
+radius = 27.0
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="Stool" type="Sprite2D" parent="."]
+scale = Vector2(0.368, 0.396)
+texture = ExtResource("1_7lt74")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4, 0)
+shape = SubResource("CircleShape2D_7lt74")

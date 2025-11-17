@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2wspp03f3vl8"]
+
+[ext_resource type="Texture2D" uid="uid://cq0u67n07yypx" path="res://Sprites/LabEquipment/largetabletop.png" id="1_ikukb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ikukb"]
+size = Vector2(477, 131)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+z_index = 2
+
+[node name="Largetabletop" type="Sprite2D" parent="."]
+rotation = 1.5707964
+scale = Vector2(0.43645832, 0.45740741)
+texture = ExtResource("1_ikukb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -9.5)
+shape = SubResource("RectangleShape2D_ikukb")

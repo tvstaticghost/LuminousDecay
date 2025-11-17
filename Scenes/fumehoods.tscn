@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2vepkitaswwv"]
+
+[ext_resource type="Texture2D" uid="uid://dfq785arsmvyp" path="res://Sprites/LabEquipment/fumehoods.png" id="1_2dxy7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2dxy7"]
+size = Vector2(688, 224)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="Fumehoods" type="Sprite2D" parent="."]
+scale = Vector2(0.486, 0.49642587)
+texture = ExtResource("1_2dxy7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 2
+position = Vector2(23, -13)
+shape = SubResource("RectangleShape2D_2dxy7")
