@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://b18h4swlgnup0"]
+
+[ext_resource type="Texture2D" uid="uid://bh5kepl7ry2xl" path="res://Sprites/LabEquipment/computerdesk.png" id="1_5d2w8"]
+
+[node name="ComputerDesk" type="StaticBody2D"]
+scale = Vector2(0.375, 0.375)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_5d2w8")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-192, -342, -192, -151, -364, -124, -378, -93, -382, -6, -358, 25, -333, 31, -191, 65, -189, 321, 111, 321, 111, -342)

@@ -28,6 +28,7 @@ mouse_cursor/custom_image="uid://bxgs48s652iox"
 [global_group]
 
 Door=""
+Player=""
 
 [input]
 

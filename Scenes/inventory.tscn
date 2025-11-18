@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bgvw2yxv3sh57"]
+[gd_scene load_steps=5 format=3 uid="uid://bgvw2yxv3sh57"]
 
 [ext_resource type="FontFile" uid="uid://c2co8l7esnbmo" path="res://Fonts/VT323-Regular.ttf" id="1_wdn4f"]
+[ext_resource type="Script" uid="uid://cuweoo8bip0nu" path="res://Scripts/inventory.gd" id="1_yxepq"]
 [ext_resource type="Texture2D" uid="uid://daaxejjq64153" path="res://Sprites/Misc/cardkey.png" id="2_k5gp2"]
 
 [sub_resource type="Theme" id="Theme_xek5a"]
@@ -13,6 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_yxepq")
 
 [node name="Bag" type="Panel" parent="."]
 layout_mode = 1
@@ -64,7 +66,7 @@ grow_horizontal = 0
 grow_vertical = 2
 text = "X"
 
-[node name="TextureRect" type="TextureRect" parent="Bag"]
+[node name="SecurityCard" type="TextureRect" parent="Bag"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -79,3 +81,6 @@ grow_horizontal = 2
 grow_vertical = 2
 rotation = -0.69115037
 texture = ExtResource("2_k5gp2")
+
+[connection signal="mouse_entered" from="Bag/SecurityCard" to="." method="_on_security_card_mouse_entered"]
+[connection signal="mouse_exited" from="Bag/SecurityCard" to="." method="_on_security_card_mouse_exited"]

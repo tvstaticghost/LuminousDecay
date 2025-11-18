@@ -115,3 +115,6 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 func _on_muzzle_flash_timer_timeout() -> void:
 	muzzle_flash.visible = false
 	muzzle_flash_timer.stop()
+
+func get_player_pos():
+	return global_position

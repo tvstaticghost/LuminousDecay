@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://iwkao0c1r5wu"]
+
+[ext_resource type="Texture2D" uid="uid://b7xbokkkl6r5b" path="res://Sprites/GunSprites/gunmagfull.png" id="1_ksytw"]
+[ext_resource type="Texture2D" uid="uid://3l7gmbguoii0" path="res://Sprites/GunSprites/bulletbox.png" id="2_evfvu"]
+[ext_resource type="Texture2D" uid="uid://cerbo4vf14g68" path="res://Sprites/Misc/bullet.png" id="3_bshs3"]
+
+[node name="ReloadScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PistolMag" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 693.00006
+offset_top = 154.0
+offset_right = 943.00006
+offset_bottom = 854.0
+scale = Vector2(0.41, 0.41)
+texture = ExtResource("1_ksytw")
+
+[node name="AmmoBox" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 221.0
+offset_top = 180.0
+offset_right = 621.0
+offset_bottom = 380.0
+texture = ExtResource("2_evfvu")
+
+[node name="Bullet" type="TextureRect" parent="AmmoBox"]
+layout_mode = 0
+offset_left = 246.0
+offset_top = 44.0
+offset_right = 346.0
+offset_bottom = 165.0
+texture = ExtResource("3_bshs3")
+
+[node name="Bullet2" type="TextureRect" parent="AmmoBox"]
+layout_mode = 0
+offset_left = 281.0
+offset_top = 44.0
+offset_right = 381.0
+offset_bottom = 165.0
+texture = ExtResource("3_bshs3")
+
+[node name="Bullet3" type="TextureRect" parent="AmmoBox"]
+layout_mode = 0
+offset_left = 317.0
+offset_top = 44.0
+offset_right = 417.0
+offset_bottom = 165.0
+texture = ExtResource("3_bshs3")
