@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://1xpsf31wnj1f"]
+
+[ext_resource type="Texture2D" uid="uid://bayxpbtpiiyd8" path="res://Sprites/bathroom/bathtrash.png" id="1_b52ws"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n15a2"]
+size = Vector2(26, 84)
+
+[node name="BathroomTrashcan" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_b52ws")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-44, -1)
+shape = SubResource("RectangleShape2D_n15a2")

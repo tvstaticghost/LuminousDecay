@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://bforgoj2lge6h"]
+[gd_scene load_steps=26 format=4 uid="uid://bforgoj2lge6h"]
 
 [ext_resource type="Texture2D" uid="uid://dgvwvanj6e63o" path="res://Sprites/floortextures/test2.png" id="1_61x6a"]
 [ext_resource type="Texture2D" uid="uid://dfkxmqtbmt40k" path="res://Sprites/floortextures/blackandwhite.png" id="2_4qyyn"]
@@ -17,6 +17,9 @@
 [ext_resource type="Texture2D" uid="uid://blksdmgw32ki1" path="res://Sprites/LabEquipment/crockpot.png" id="14_3c0mj"]
 [ext_resource type="PackedScene" uid="uid://b18h4swlgnup0" path="res://Scenes/computer_desk.tscn" id="15_3c0mj"]
 [ext_resource type="PackedScene" uid="uid://cwkn260umwavt" path="res://Scenes/trash_can.tscn" id="16_kja65"]
+[ext_resource type="PackedScene" uid="uid://f3iyerdsjdcy" path="res://Scenes/stall.tscn" id="18_ompgf"]
+[ext_resource type="PackedScene" uid="uid://yn8b6hrcnoci" path="res://Scenes/bathroom_sink.tscn" id="19_3kxmd"]
+[ext_resource type="PackedScene" uid="uid://1xpsf31wnj1f" path="res://Scenes/bathroom_trashcan.tscn" id="20_73ddt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4o8ct"]
 texture = ExtResource("1_61x6a")
@@ -309,3 +312,85 @@ position = Vector2(-418, 2115)
 
 [node name="TrashCan3" parent="LabFurniture" instance=ExtResource("16_kja65")]
 position = Vector2(1997, 1720)
+
+[node name="BathroomFurniture" type="Node" parent="."]
+
+[node name="Stall" parent="BathroomFurniture" instance=ExtResource("18_ompgf")]
+position = Vector2(328, 3188)
+rotation = -1.5707964
+
+[node name="Stall2" parent="BathroomFurniture" instance=ExtResource("18_ompgf")]
+position = Vector2(130, 3188)
+rotation = -1.5707964
+
+[node name="Stall3" parent="BathroomFurniture" instance=ExtResource("18_ompgf")]
+position = Vector2(-67, 3188)
+rotation = -1.5707964
+
+[node name="Stall4" parent="BathroomFurniture" instance=ExtResource("18_ompgf")]
+position = Vector2(1308, 3187)
+rotation = -1.5707964
+
+[node name="Stall5" parent="BathroomFurniture" instance=ExtResource("18_ompgf")]
+position = Vector2(1110, 3187)
+rotation = -1.5707964
+
+[node name="Stall6" parent="BathroomFurniture" instance=ExtResource("18_ompgf")]
+position = Vector2(913, 3187)
+rotation = -1.5707964
+
+[node name="Stall7" parent="BathroomFurniture" instance=ExtResource("18_ompgf")]
+position = Vector2(1901, 3187)
+rotation = -1.5707964
+
+[node name="Stall8" parent="BathroomFurniture" instance=ExtResource("18_ompgf")]
+position = Vector2(1703, 3187)
+rotation = -1.5707964
+
+[node name="Stall9" parent="BathroomFurniture" instance=ExtResource("18_ompgf")]
+position = Vector2(1506, 3187)
+rotation = -1.5707964
+
+[node name="BathroomSink" parent="BathroomFurniture" instance=ExtResource("19_3kxmd")]
+position = Vector2(169, 2622)
+rotation = -1.5707964
+
+[node name="BathroomSink2" parent="BathroomFurniture" instance=ExtResource("19_3kxmd")]
+position = Vector2(24, 2622)
+rotation = -1.5707964
+
+[node name="BathroomSink3" parent="BathroomFurniture" instance=ExtResource("19_3kxmd")]
+position = Vector2(-121, 2622)
+rotation = -1.5707964
+
+[node name="BathroomSink4" parent="BathroomFurniture" instance=ExtResource("19_3kxmd")]
+position = Vector2(1881, 2623)
+rotation = -1.5707964
+
+[node name="BathroomSink7" parent="BathroomFurniture" instance=ExtResource("19_3kxmd")]
+position = Vector2(1446, 2623)
+rotation = -1.5707964
+
+[node name="BathroomSink5" parent="BathroomFurniture" instance=ExtResource("19_3kxmd")]
+position = Vector2(1736, 2623)
+rotation = -1.5707964
+
+[node name="BathroomSink6" parent="BathroomFurniture" instance=ExtResource("19_3kxmd")]
+position = Vector2(1591, 2623)
+rotation = -1.5707964
+
+[node name="BathroomTrashcan" parent="BathroomFurniture" instance=ExtResource("20_73ddt")]
+position = Vector2(260, 2609)
+rotation = -1.5707964
+
+[node name="BathroomTrashcan2" parent="BathroomFurniture" instance=ExtResource("20_73ddt")]
+position = Vector2(-280, 2609)
+rotation = -1.5707964
+
+[node name="BathroomTrashcan3" parent="BathroomFurniture" instance=ExtResource("20_73ddt")]
+position = Vector2(1976, 2609)
+rotation = -1.5707964
+
+[node name="BathroomTrashcan4" parent="BathroomFurniture" instance=ExtResource("20_73ddt")]
+position = Vector2(1282, 2609)
+rotation = -1.5707964

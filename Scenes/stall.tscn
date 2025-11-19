@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://f3iyerdsjdcy"]
+
+[ext_resource type="Texture2D" uid="uid://blm6qvhsuq7gl" path="res://Sprites/bathroom/toiletstall.png" id="1_wxwty"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wxwty"]
+size = Vector2(288, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cnl4a"]
+size = Vector2(12, 184)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wxwty"]
+radius = 38.0
+height = 104.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cnl4a"]
+radius = 13.0
+height = 47.999992
+
+[node name="Stall" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_wxwty")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-30, -87.5)
+shape = SubResource("RectangleShape2D_wxwty")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-30, 103)
+shape = SubResource("RectangleShape2D_wxwty")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(108, 8)
+shape = SubResource("RectangleShape2D_cnl4a")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
+position = Vector2(-68, 11)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_wxwty")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="."]
+position = Vector2(-51, -55)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_cnl4a")
