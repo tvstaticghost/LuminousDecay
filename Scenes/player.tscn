@@ -211,6 +211,9 @@ position = Vector2(-6, 43)
 position = Vector2(0, -8)
 target_position = Vector2(0, 49)
 
+[node name="FlashLight" type="PointLight2D" parent="Player"]
+rotation = 1.5707964
+
 [node name="GunAimSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("37_sbwqj")
 

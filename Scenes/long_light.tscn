@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cq2q6i8ajjj0e"]
+
+[ext_resource type="Texture2D" uid="uid://dv1ddgg3xavtb" path="res://Sprites/Misc/lights.png" id="1_dx2gj"]
+
+[sub_resource type="Gradient" id="Gradient_dx2gj"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bjer5"]
+gradient = SubResource("Gradient_dx2gj")
+fill_from = Vector2(0, 0.03271028)
+
+[node name="LongLight" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.21568628)
+z_index = 10
+texture = ExtResource("1_dx2gj")
+region_enabled = true
+region_rect = Rect2(27.989037, 5.84404, 52.892715, 185.76616)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+texture = SubResource("GradientTexture2D_bjer5")
