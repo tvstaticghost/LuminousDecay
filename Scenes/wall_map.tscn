@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://ccxbyn6kqgyoy"]
+
+[ext_resource type="Script" uid="uid://cdpyspfd7uvsn" path="res://Scripts/wall_map.gd" id="1_x6ba4"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_njuqx"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_njuqx"]
+radius = 7.5782533
+height = 44.151558
+
+[node name="WallMap" type="Node2D"]
+scale = Vector2(6.07, 6.07)
+script = ExtResource("1_x6ba4")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+position = Vector2(1, 10.375)
+scale = Vector2(2, 20.75)
+mesh = SubResource("QuadMesh_njuqx")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-4.942339, 9.719933)
+rotation = 3.1415927
+shape = SubResource("CapsuleShape2D_njuqx")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

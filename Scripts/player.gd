@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+@onready var gun_empty: AudioStreamPlayer = $"../GunEmpty"
 @onready var gun_aim_sound: AudioStreamPlayer = $"../GunAimSound"
 @onready var gun_shot_sound: AudioStreamPlayer = $"../GunShotSound"
 @onready var gun_reload_sound: AudioStreamPlayer = $"../GunReloadSound"
@@ -20,6 +21,7 @@ const BULLET = preload("uid://nbhfnfyj62ph")
 var can_walk: bool = true
 var walking: bool = false
 var is_aiming: bool = false
+var in_map_area: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -66,15 +68,23 @@ func aiming(delta):
 		
 		
 func fire_gun():
-	muzzle_flash_timer.start()
-	muzzle_flash.visible = true
-	gun_shot_sound.play()
-	var bullet_inst = BULLET.instantiate()
-	get_tree().root.add_child(bullet_inst)
-	bullet_inst.global_position = ejection_port.global_position
-	SignalManager.gun_fired.emit(-ejection_port.global_transform.x)
+	if BulletManager.bullet_amount > 0:
+		muzzle_flash_timer.start()
+		muzzle_flash.visible = true
+		gun_shot_sound.play()
+		var bullet_inst = BULLET.instantiate()
+		get_tree().root.add_child(bullet_inst)
+		bullet_inst.global_position = ejection_port.global_position
+		SignalManager.gun_fired.emit(-ejection_port.global_transform.x)
+	else:
+		#Handle empty mag logic
+		gun_empty.play()
 	
 func handle_interact():
+	if in_map_area:
+		SignalManager.map_triggered.emit()
+		return
+		
 	if interact_cast.is_colliding():
 		var hit = interact_cast.get_collider()
 		if hit != null and hit.is_in_group("Door"):
@@ -100,6 +110,9 @@ func _physics_process(delta: float) -> void:
 		
 		fire_gun()
 		
+	if Input.is_action_just_pressed("reload"):
+		SignalManager.reload_triggered.emit()
+		
 	if can_walk:
 		get_input(delta)
 	move_and_slide()
@@ -118,3 +131,6 @@ func _on_muzzle_flash_timer_timeout() -> void:
 
 func get_player_pos():
 	return global_position
+
+func toggle_map_interact(in_area: bool):
+	in_map_area = in_area

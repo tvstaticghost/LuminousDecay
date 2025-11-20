@@ -1,7 +1,10 @@
 extends CharacterBody2D
 
+@onready var enemy_visuals: Sprite2D = $EnemyVisuals
 @onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
 @export var movement_speed = 100
+@export var vision_distance: float = 270
+
 var target
 var player
 
@@ -23,5 +26,12 @@ func move_towards_player():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta: float) -> void:
 	move_towards_player()
-		
+	
+	var distance = global_position.distance_to(player.global_position)
+	print(distance)
+	if distance < vision_distance:
+		enemy_visuals.visible = true
+	else:
+		enemy_visuals.visible = false
+	
 	move_and_slide()

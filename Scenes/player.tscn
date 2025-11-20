@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://mih0qf6u62d2"]
+[gd_scene load_steps=43 format=3 uid="uid://mih0qf6u62d2"]
 
 [ext_resource type="Texture2D" uid="uid://31rx67p8u076" path="res://Sprites/PlayerSprites/idle/frame0000.png" id="1_f1ek2"]
 [ext_resource type="Script" uid="uid://dvn7aq4svpnqd" path="res://Scripts/player.gd" id="1_ph33w"]
@@ -37,6 +37,7 @@
 [ext_resource type="Texture2D" uid="uid://cd3byemirwajw" path="res://Sprites/PlayerSprites/walk/frame0005.png" id="39_by7i4"]
 [ext_resource type="AudioStream" uid="uid://b3cmxiug4rr7j" path="res://Sounds/reloadend.wav" id="39_sweqm"]
 [ext_resource type="Texture2D" uid="uid://bil5pxy5p2glx" path="res://Sprites/PlayerSprites/walk/frame0006.png" id="40_3uvy8"]
+[ext_resource type="AudioStream" uid="uid://tr23sdlisbh" path="res://Sounds/gunempty.mp3" id="40_xwi16"]
 [ext_resource type="Texture2D" uid="uid://dwjlke6kdxlnx" path="res://Sprites/PlayerSprites/walk/frame0007.png" id="41_ss172"]
 [ext_resource type="Texture2D" uid="uid://c1c421ok1fp5t" path="res://Sprites/Misc/muzzleflash.png" id="43_7ldla"]
 
@@ -172,7 +173,7 @@ height = 70.0
 [node name="Player" type="Node2D" groups=["Player"]]
 z_index = 1
 
-[node name="Player" type="CharacterBody2D" parent="."]
+[node name="Player" type="CharacterBody2D" parent="." groups=["PlayerBody"]]
 script = ExtResource("1_ph33w")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
@@ -191,7 +192,7 @@ z_index = 1
 
 [node name="BulletCast" type="RayCast2D" parent="Player"]
 position = Vector2(-4, 60)
-target_position = Vector2(0, 264)
+target_position = Vector2(0, 600)
 
 [node name="MuzzleFlash" type="Sprite2D" parent="Player"]
 visible = false
@@ -222,6 +223,9 @@ stream = ExtResource("38_xwi16")
 
 [node name="GunReloadSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("39_sweqm")
+
+[node name="GunEmpty" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("40_xwi16")
 
 [connection signal="animation_finished" from="Player/AnimatedSprite2D" to="Player" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="Player/MuzzleFlashTimer" to="Player" method="_on_muzzle_flash_timer_timeout"]

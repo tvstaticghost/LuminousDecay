@@ -1,0 +1,260 @@
+[gd_scene load_steps=7 format=3 uid="uid://deq006c01sp0e"]
+
+[ext_resource type="Texture2D" uid="uid://dxududqpr0di1" path="res://Sprites/Misc/levelmap.png" id="1_ci6au"]
+[ext_resource type="Script" uid="uid://c2ydpp4ya7obg" path="res://Scripts/map.gd" id="1_p3ir5"]
+[ext_resource type="FontFile" uid="uid://c2co8l7esnbmo" path="res://Fonts/VT323-Regular.ttf" id="2_26yhd"]
+
+[sub_resource type="Theme" id="Theme_26yhd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p3ir5"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_myvm1"]
+Button/styles/normal = SubResource("StyleBoxFlat_p3ir5")
+
+[node name="Map" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_p3ir5")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.56078434)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -392.0
+offset_top = -239.0
+offset_right = 1528.0
+offset_bottom = 841.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.42, 0.42)
+theme = SubResource("Theme_26yhd")
+texture = ExtResource("1_ci6au")
+
+[node name="Label" type="Label" parent="."]
+z_index = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.521
+anchor_top = 0.5
+anchor_right = 0.521
+anchor_bottom = 0.5
+offset_left = -103.19202
+offset_top = -195.0
+offset_right = -3.1920166
+offset_bottom = -139.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_26yhd")
+theme_override_font_sizes/font_size = 27
+text = "Lobby"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+z_index = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -131.0
+offset_top = -127.0
+offset_right = -56.0
+offset_bottom = -70.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_26yhd")
+theme_override_font_sizes/font_size = 27
+text = "Lab 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="."]
+z_index = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.49500003
+anchor_top = 0.5
+anchor_right = 0.49500003
+anchor_bottom = 0.5
+offset_left = 34.75995
+offset_top = -129.0
+offset_right = 104.75995
+offset_bottom = -75.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_26yhd")
+theme_override_font_sizes/font_size = 27
+text = "Lab 2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="."]
+z_index = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.52500004
+anchor_right = 0.5
+anchor_bottom = 0.52500004
+offset_left = 22.0
+offset_top = -62.200012
+offset_right = 115.0
+offset_bottom = -0.2000122
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_26yhd")
+theme_override_font_sizes/font_size = 27
+text = "Lab 4"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="."]
+z_index = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.523
+anchor_right = 0.5
+anchor_bottom = 0.523
+offset_left = -131.0
+offset_top = -61.90399
+offset_right = -55.0
+offset_bottom = 0.0960083
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_26yhd")
+theme_override_font_sizes/font_size = 27
+text = "Lab 3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="."]
+z_index = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.49100003
+anchor_top = 0.5
+anchor_right = 0.49100003
+anchor_bottom = 0.5
+offset_left = -99.63202
+offset_top = 98.0
+offset_right = 0.36798096
+offset_bottom = 160.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_26yhd")
+theme_override_font_sizes/font_size = 33
+text = "Lobby"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label8" type="Label" parent="."]
+z_index = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -203.0
+offset_top = 55.0
+offset_right = -127.0
+offset_bottom = 117.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_26yhd")
+theme_override_font_sizes/font_size = 21
+text = "Manager's
+Office"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label9" type="Label" parent="."]
+z_index = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.526
+anchor_right = 0.5
+anchor_bottom = 0.526
+offset_left = 157.0
+offset_top = 0.15197754
+offset_right = 243.0
+offset_bottom = 62.151978
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_26yhd")
+theme_override_font_sizes/font_size = 33
+text = "Lobby"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label7" type="Label" parent="."]
+z_index = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.51000005
+anchor_top = 0.5
+anchor_right = 0.51000005
+anchor_bottom = 0.5
+offset_left = -0.52008057
+offset_top = 98.0
+offset_right = 123.47992
+offset_bottom = 160.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_26yhd")
+theme_override_font_sizes/font_size = 33
+text = "Lobby"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label10" type="Label" parent="."]
+z_index = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.51000005
+anchor_top = 0.5
+anchor_right = 0.51000005
+anchor_bottom = 0.5
+offset_left = 175.47992
+offset_top = 145.0
+offset_right = 386.47992
+offset_bottom = 207.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_26yhd")
+theme_override_font_sizes/font_size = 33
+text = "Press E to close"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 370.0
+offset_top = -231.0
+offset_right = 413.0
+offset_bottom = -189.0
+grow_horizontal = 0
+scale = Vector2(0.825, 0.825)
+theme = SubResource("Theme_myvm1")
+theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
+theme_override_fonts/font = ExtResource("2_26yhd")
+theme_override_font_sizes/font_size = 41
+text = "x"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

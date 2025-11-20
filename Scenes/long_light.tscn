@@ -3,19 +3,31 @@
 [ext_resource type="Texture2D" uid="uid://dv1ddgg3xavtb" path="res://Sprites/Misc/lights.png" id="1_dx2gj"]
 
 [sub_resource type="Gradient" id="Gradient_dx2gj"]
+offsets = PackedFloat32Array(0.24666667, 0.54)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_bjer5"]
 gradient = SubResource("Gradient_dx2gj")
-fill_from = Vector2(0, 0.03271028)
+fill = 1
+fill_from = Vector2(0.4906542, 0.5373832)
 
 [node name="LongLight" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-self_modulate = Color(1, 1, 1, 0.21568628)
+self_modulate = Color(1, 1, 1, 0.08627451)
 z_index = 10
 texture = ExtResource("1_dx2gj")
 region_enabled = true
 region_rect = Rect2(27.989037, 5.84404, 52.892715, 185.76616)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-14.5, -4.4999924)
+scale = Vector2(0.390625, 3.890625)
+color = Color(0.83137256, 0.8862745, 1, 1)
+texture = SubResource("GradientTexture2D_bjer5")
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(13, -2.5000038)
+scale = Vector2(0.390625, 3.8593755)
+color = Color(0.83137256, 0.8862745, 1, 1)
 texture = SubResource("GradientTexture2D_bjer5")
