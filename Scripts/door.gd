@@ -5,7 +5,7 @@ extends Node2D
 @onready var door_timer: Timer = $DoorTimer
 
 var can_open: bool = true
-var locked: bool = false
+@export var locked: bool = false
 var door_open: bool = false
 
 # Called when the node enters the scene tree for the first time.
@@ -23,6 +23,8 @@ func test():
 			animation_player.play("door_close")
 		can_open = false
 		door_timer.start()
+	else:
+		print('This door is locked')
 
 
 func _on_door_timer_timeout() -> void:

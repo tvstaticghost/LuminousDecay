@@ -31,6 +31,8 @@ mouse_cursor/custom_image="uid://bxgs48s652iox"
 Door=""
 Player=""
 PlayerBody=""
+Enemy=""
+Walls=""
 
 [input]
 

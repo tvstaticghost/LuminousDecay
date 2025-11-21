@@ -167,8 +167,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sbwqj"]
-radius = 20.0
-height = 70.0
+radius = 28.0
+height = 58.0
 
 [node name="Player" type="Node2D" groups=["Player"]]
 z_index = 1
@@ -183,7 +183,7 @@ animation = &"walk"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(7, -27)
+position = Vector2(6, -23)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_sbwqj")
 

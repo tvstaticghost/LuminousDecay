@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var gun_shot_sound: AudioStreamPlayer = $"../GunShotSound"
 @onready var gun_reload_sound: AudioStreamPlayer = $"../GunReloadSound"
 @onready var interact_cast: RayCast2D = $InteractCast
+@onready var bullet_cast: RayCast2D = $BulletCast
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
@@ -76,6 +77,16 @@ func fire_gun():
 		get_tree().root.add_child(bullet_inst)
 		bullet_inst.global_position = ejection_port.global_position
 		SignalManager.gun_fired.emit(-ejection_port.global_transform.x)
+		
+		if bullet_cast.is_colliding():
+			var hit = bullet_cast.get_collider()
+			#If hitting an enemy - deal damage
+			if hit.is_in_group("Enemy"):
+				print('You hit an enemy')
+				hit.take_damage(10)
+			elif hit.is_in_group("Walls"):
+				print('You hit the walls')
+				#TODO if time allows - add a little particle effect when hitting a wall.
 	else:
 		#Handle empty mag logic
 		gun_empty.play()
