@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://iwkao0c1r5wu"]
+[gd_scene load_steps=7 format=3 uid="uid://iwkao0c1r5wu"]
 
 [ext_resource type="Script" uid="uid://0f6g6kqjtnxl" path="res://Scripts/reload_scene.gd" id="1_eq0wc"]
 [ext_resource type="Texture2D" uid="uid://b7xbokkkl6r5b" path="res://Sprites/GunSprites/gunmagfull.png" id="1_ksytw"]
+[ext_resource type="Theme" uid="uid://oed7m0bvofcr" path="res://Themes/darkness_bar.tres" id="2_3wbq5"]
 [ext_resource type="Texture2D" uid="uid://d0lem37t8p7bu" path="res://Sprites/GunSprites/gunmagempty.png" id="2_bshs3"]
 [ext_resource type="Texture2D" uid="uid://3l7gmbguoii0" path="res://Sprites/GunSprites/bulletbox.png" id="2_evfvu"]
-[ext_resource type="Texture2D" uid="uid://cerbo4vf14g68" path="res://Sprites/Misc/bullet.png" id="3_bshs3"]
+[ext_resource type="Texture2D" uid="uid://dqlv72bouve05" path="res://Sprites/Misc/new_bullet.png" id="6_vwr4l"]
 
 [node name="ReloadScene" type="Control"]
 layout_mode = 3
@@ -27,6 +28,7 @@ offset_bottom = 79.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.77, 0.77)
+theme = ExtResource("2_3wbq5")
 
 [node name="PistolMag" type="TextureRect" parent="Panel"]
 layout_mode = 0
@@ -48,6 +50,7 @@ scale = Vector2(0.41, 0.41)
 texture = ExtResource("2_bshs3")
 
 [node name="AmmoBox" type="TextureRect" parent="Panel"]
+self_modulate = Color(1, 1, 1, 0.5647059)
 layout_mode = 0
 offset_left = 221.0
 offset_top = 180.0
@@ -57,24 +60,64 @@ texture = ExtResource("2_evfvu")
 
 [node name="Bullet" type="TextureRect" parent="Panel/AmmoBox"]
 layout_mode = 0
-offset_left = 246.0
-offset_top = 44.0
-offset_right = 346.0
-offset_bottom = 165.0
-texture = ExtResource("3_bshs3")
+offset_left = 282.89612
+offset_top = 48.57144
+offset_right = 312.76624
+offset_bottom = 155.06494
+texture = ExtResource("6_vwr4l")
+
+[node name="Button1" type="Button" parent="Panel/AmmoBox/Bullet"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.043
+anchor_top = 0.024
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.014230847
+offset_top = 0.041557074
 
 [node name="Bullet2" type="TextureRect" parent="Panel/AmmoBox"]
 layout_mode = 0
-offset_left = 281.0
-offset_top = 44.0
-offset_right = 381.0
-offset_bottom = 165.0
-texture = ExtResource("3_bshs3")
+offset_left = 317.96106
+offset_top = 48.57144
+offset_right = 347.83118
+offset_bottom = 155.06494
+texture = ExtResource("6_vwr4l")
+
+[node name="Button2" type="Button" parent="Panel/AmmoBox/Bullet2"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.038000003
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.7656555e-05
+offset_top = -2.7480383
+offset_right = 2.670288e-05
 
 [node name="Bullet3" type="TextureRect" parent="Panel/AmmoBox"]
 layout_mode = 0
-offset_left = 317.0
-offset_top = 44.0
-offset_right = 417.0
-offset_bottom = 165.0
-texture = ExtResource("3_bshs3")
+offset_left = 351.7273
+offset_top = 48.57144
+offset_right = 381.5974
+offset_bottom = 155.06494
+texture = ExtResource("6_vwr4l")
+
+[node name="Button3" type="Button" parent="Panel/AmmoBox/Bullet3"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.043
+anchor_top = 0.038000003
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.01429379
+offset_top = -2.7480497
+
+[connection signal="button_down" from="Panel/AmmoBox/Bullet/Button1" to="." method="_on_button_1_button_down"]
+[connection signal="button_up" from="Panel/AmmoBox/Bullet/Button1" to="." method="_on_button_1_button_up"]
+[connection signal="button_down" from="Panel/AmmoBox/Bullet2/Button2" to="." method="_on_button_2_button_down"]
+[connection signal="button_up" from="Panel/AmmoBox/Bullet2/Button2" to="." method="_on_button_2_button_up"]
+[connection signal="button_down" from="Panel/AmmoBox/Bullet3/Button3" to="." method="_on_button_3_button_down"]
+[connection signal="button_up" from="Panel/AmmoBox/Bullet3/Button3" to="." method="_on_button_3_button_up"]

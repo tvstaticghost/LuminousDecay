@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var gun_aim_sound: AudioStreamPlayer = $"../GunAimSound"
 @onready var gun_shot_sound: AudioStreamPlayer = $"../GunShotSound"
 @onready var gun_reload_sound: AudioStreamPlayer = $"../GunReloadSound"
+@onready var ghost_whispers: AudioStreamPlayer = $"../GhostWhispers"
 @onready var interact_cast: RayCast2D = $InteractCast
 @onready var bullet_cast: RayCast2D = $BulletCast
 
@@ -15,18 +16,28 @@ extends CharacterBody2D
 @onready var ejection_port: Marker2D = $EjectionPort
 const BULLET = preload("uid://nbhfnfyj62ph")
 
+@onready var blood_sound_1: AudioStreamPlayer = $"../BloodSound1"
+@onready var blood_sound_2: AudioStreamPlayer = $"../BloodSound2"
+@onready var blood_sound_3: AudioStreamPlayer = $"../BloodSound3"
+var blood_sound_list = []
+
 @export var speed: float = 250
 @export var rotation_speed = 6
 @export var accel := 3000.0
+@export var original_i_value: float = 0.0
 
 var can_walk: bool = true
 var walking: bool = false
 var is_aiming: bool = false
 var in_map_area: bool = false
 
+var ghost_fade_tween: Tween
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	blood_sound_list.append(blood_sound_1)
+	blood_sound_list.append(blood_sound_2)
+	blood_sound_list.append(blood_sound_3)
 	
 func play_animation(animation: String):
 	animated_sprite_2d.play(animation)
@@ -70,6 +81,7 @@ func aiming(delta):
 		
 func fire_gun():
 	if BulletManager.bullet_amount > 0:
+		
 		muzzle_flash_timer.start()
 		muzzle_flash.visible = true
 		gun_shot_sound.play()
@@ -83,7 +95,11 @@ func fire_gun():
 			#If hitting an enemy - deal damage
 			if hit.is_in_group("Enemy"):
 				print('You hit an enemy')
-				hit.take_damage(10)
+				hit.get_parent().take_damage(10)
+				var direction = bullet_cast.global_transform.x
+				hit.get_parent().spawn_blood(direction)
+				var blood_sound = blood_sound_list[randi_range(0, len(blood_sound_list) - 1)]
+				blood_sound.play()
 			elif hit.is_in_group("Walls"):
 				print('You hit the walls')
 				#TODO if time allows - add a little particle effect when hitting a wall.
@@ -145,3 +161,30 @@ func get_player_pos():
 
 func toggle_map_interact(in_area: bool):
 	in_map_area = in_area
+	
+
+func fade_in_ghost():
+	var tween = create_tween()
+	ghost_whispers.volume_db = -20  # start quiet
+	ghost_whispers.play()
+	tween.tween_property(ghost_whispers, "volume_db", 0, 1.5) # fade to full over 1.5 sec
+
+func fade_out_ghost():
+	var tween = create_tween()
+	tween.tween_property(ghost_whispers, "volume_db", -40, 1.5) # fade to silence
+	tween.tween_callback(ghost_whispers.stop)
+
+func _on_hurtbox_area_entered(area: Area2D) -> void:
+	if area.is_in_group("Enemy"):
+		print('enemy deals damage - player attacked trigger event')
+		animated_sprite_2d.self_modulate.v = 10.0
+		fade_in_ghost()
+		SignalManager.player_attacked.emit()
+
+
+func _on_hurtbox_area_exited(area: Area2D) -> void:
+	if area.is_in_group("Enemy"):
+		print('enemy done dealing damage - player safe trigger event')
+		animated_sprite_2d.self_modulate.v = 1.0
+		fade_out_ghost()
+		SignalManager.player_safe.emit()

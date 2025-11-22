@@ -10,5 +10,6 @@ func toggle_map():
 
 
 func _on_button_pressed() -> void:
+	print("Map button pressed")
 	if visible:
 		visible = false

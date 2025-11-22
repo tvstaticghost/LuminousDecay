@@ -1,0 +1,81 @@
+[gd_scene load_steps=6 format=3 uid="uid://duti5tu0upko4"]
+
+[ext_resource type="Script" uid="uid://80h77ft4co2f" path="res://Scripts/darkness_bar.gd" id="1_15cm3"]
+[ext_resource type="Theme" uid="uid://oed7m0bvofcr" path="res://Themes/darkness_bar.tres" id="1_oigfb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3foav"]
+bg_color = Color(0.12156863, 0.12156863, 0.12156863, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3366075, 0.33660766, 0.3366076, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oigfb"]
+bg_color = Color(0, 0, 0, 1)
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3372549, 0.3372549, 0.3372549, 1)
+
+[sub_resource type="Theme" id="Theme_15cm3"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_3foav")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_oigfb")
+
+[node name="DarknessBar" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_15cm3")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_direction = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.68700004
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.57592773
+offset_top = -36.0
+offset_right = -15.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = SubResource("Theme_15cm3")
+rounded = true
+show_percentage = false
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -104.0
+offset_top = -44.0
+offset_right = -15.0
+offset_bottom = -10.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("1_oigfb")
+
+[node name="AmmoLabel" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.5
+offset_top = -20.0
+offset_right = 43.5
+offset_bottom = 19.0
+theme = ExtResource("1_oigfb")
+text = "0/0"
+horizontal_alignment = 1
+vertical_alignment = 1

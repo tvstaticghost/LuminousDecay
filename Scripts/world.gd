@@ -1,0 +1,19 @@
+extends Node2D
+
+@onready var color_rect: ColorRect = $CanvasLayer/ColorRect
+
+var starting_level: float = 0.4
+var current_darkness_level: float
+var max_level: float = 1.0
+
+func _ready() -> void:
+	current_darkness_level = starting_level
+	color_rect.color = Color(0, 0, 0, starting_level)
+	SignalManager.darken_screen.connect(darken)
+	
+func darken(amount: float):
+	# Increase darkness
+	current_darkness_level += amount
+	print("WORLD Darkness Level: %d " % current_darkness_level)
+
+	color_rect.color.a = (0.006 * current_darkness_level) + 0.4

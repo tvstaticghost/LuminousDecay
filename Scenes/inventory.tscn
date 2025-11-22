@@ -67,7 +67,7 @@ grow_horizontal = 0
 grow_vertical = 2
 text = "X"
 
-[node name="SecurityCard" type="TextureRect" parent="Bag"]
+[node name="SecurityCard" type="TextureRect" parent="Bag" groups=["InventoryItem"]]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -83,7 +83,7 @@ grow_vertical = 2
 rotation = -0.69115037
 texture = ExtResource("2_k5gp2")
 
-[node name="Key" type="TextureRect" parent="Bag"]
+[node name="Key" type="TextureRect" parent="Bag" groups=["InventoryItem"]]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

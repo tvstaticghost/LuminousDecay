@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://ci2cieaa5igml"]
+[gd_scene load_steps=9 format=3 uid="uid://ci2cieaa5igml"]
 
 [ext_resource type="PackedScene" uid="uid://bforgoj2lge6h" path="res://Scenes/test_floor.tscn" id="1_go701"]
+[ext_resource type="Script" uid="uid://dpjnqetft3fq3" path="res://Scripts/world.gd" id="1_o06y3"]
 [ext_resource type="PackedScene" uid="uid://mih0qf6u62d2" path="res://Scenes/player.tscn" id="2_5a7ea"]
 [ext_resource type="PackedScene" uid="uid://b0a8gj5ua547s" path="res://Scenes/enemy.tscn" id="3_5a7ea"]
 [ext_resource type="PackedScene" uid="uid://iwkao0c1r5wu" path="res://Scenes/reload_scene.tscn" id="4_8j60k"]
 [ext_resource type="PackedScene" uid="uid://deq006c01sp0e" path="res://Scenes/map.tscn" id="5_fo5ed"]
+[ext_resource type="PackedScene" uid="uid://duti5tu0upko4" path="res://Scenes/darkness_bar.tscn" id="6_5ukr8"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_go701"]
 vertices = PackedVector2Array(-1017.71094, 2277.711, -487.47656, 2273.3438, -508.7578, 2398.9922, -1012.28125, 2949.0469, -470.9297, 2949.9375, -469.9297, 2415.7813, -217.65625, 2385.3906, -242, 2417.2188, 657.0781, 2763.1797, 672.8594, 3267.3594, 516.3672, 3264.6016, 511.3672, 2991.1016, 469.53125, 2764.2031, -234, 2988.8984, -234, 2770.4922, 444.3672, 2760.4766, 480.46094, 2497.7031, 441.6172, 2506, -350.09375, 2031.7031, -351.89844, 1365.3984, 189.34375, 1371.6016, 190.35156, 1472.2578, 189.46094, 1490.4922, 2964.1484, 1753.1094, 2968.8438, 2791.6719, 2161, 2784.3125, 2161, 2512.1719, 2155.789, 1755.8828, 2152.7969, 2270.8125, 1084, 2506.8281, 642.21094, 2279.1797, 1968.3906, 1365.1094, 1969.5938, 1471.9219, 970.96094, 1469.9297, 859.8672, 1368.8828, 857.8672, 1928.6172, 979.0078, 1744.8906, 1084, 2785.4063, 1952, 2775.3984, 1952, 2995.1172, 878.78906, 2998.8672, 877.1875, 2719.5313, 1040.4375, 2712.6094, 1049.6406, 2519.3672, 393.89844, 2283.8281, 212.65625, 1082.0781, 213.64844, 1184.1016, -393.0625, 1185.8906, -393.9297, 709.84375, 212.40625, 707.1406, 225.42188, 1024.4219, 671.5, 1081.0469, 613.9922, 1081.1797, 409.04688, 1081.6406, 375.4375, 1022.5703, 658.8594, 1035, 718.7969, 1072.1797, -218.64063, 2286.8203, 1909.3125, 1747.9609, 1957.25, 1783.7422, 1961.4688, 2064.4375, 841.3281, 2078.5625, 839.3203, 1971.7969, 619.21094, 1924.3906, 622.7422, 1979.2578, 829.21875, 723.8594, 1811.75, 719.9297, 1812.8672, 1020.3594, 1528.4609, 1023.3594, 822.21875, 1035, 1526.4609, 1173, 823, 1080.2109, 823, 1173, -242, 2506, 396.10156, 1493.5078, 390.3672, 1470.75, 96.859375, 96.88281, 934.2578, 94.109375, 937.72656, 546.46875, 646.0781, 550.4922, 95.13281, 557.6328, 369.5625, 562.6172, 722.46094, 1082.4375, 182.4375, 2027.2813)
@@ -14,6 +16,7 @@ cell_size = 16.0
 agent_radius = 35.0
 
 [node name="World" type="Node2D"]
+script = ExtResource("1_o06y3")
 
 [node name="TestFloor" parent="." instance=ExtResource("1_go701")]
 
@@ -34,10 +37,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0.02745098, 0.78431374)
+color = Color(0, 0, 0, 0.3137255)
 
-[node name="ReloadScene" parent="CanvasLayer" instance=ExtResource("4_8j60k")]
-visible = false
+[node name="DarknessBar" parent="CanvasLayer" instance=ExtResource("6_5ukr8")]
 
 [node name="Map" parent="CanvasLayer" instance=ExtResource("5_fo5ed")]
+visible = false
+
+[node name="ReloadScene" parent="CanvasLayer" instance=ExtResource("4_8j60k")]
 visible = false

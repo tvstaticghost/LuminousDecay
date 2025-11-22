@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://fxgm1svx17yj"]
+
+[ext_resource type="Texture2D" uid="uid://bpwu076lx3rh1" path="res://Sprites/Blood/frame0002.png" id="1_uac2d"]
+
+[node name="Blood3" type="Sprite2D"]
+scale = Vector2(0.195, 0.195)
+texture = ExtResource("1_uac2d")

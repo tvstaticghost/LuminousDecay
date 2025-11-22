@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://b0a8gj5ua547s"]
+[gd_scene load_steps=25 format=3 uid="uid://b0a8gj5ua547s"]
 
 [ext_resource type="Script" uid="uid://c4ithh12stopj" path="res://Scripts/enemy.gd" id="1_1f0kj"]
 [ext_resource type="Texture2D" uid="uid://b00rslxssrxm3" path="res://Sprites/Monster/Crawl/frame0000.png" id="2_hgeoe"]
+[ext_resource type="Shader" uid="uid://bvant4a81c83t" path="res://Shaders/outline.gdshader" id="2_tk7xo"]
 [ext_resource type="Texture2D" uid="uid://c3qbb4xql27hw" path="res://Sprites/Monster/Crawl/frame0001.png" id="3_tk7xo"]
 [ext_resource type="Texture2D" uid="uid://n7o01niv52ou" path="res://Sprites/Monster/Crawl/frame0002.png" id="4_scl1n"]
 [ext_resource type="Texture2D" uid="uid://cxrao3mn1phv4" path="res://Sprites/Monster/Crawl/frame0003.png" id="5_dhkrs"]
@@ -16,6 +17,15 @@
 [ext_resource type="Texture2D" uid="uid://dt5dovk3fr758" path="res://Sprites/Monster/Crawl/frame0012.png" id="14_qqxsh"]
 [ext_resource type="Texture2D" uid="uid://coqjaic8t80d" path="res://Sprites/Monster/Crawl/frame0013.png" id="15_0whn2"]
 [ext_resource type="Texture2D" uid="uid://b1n85c8tnmsuv" path="res://Sprites/Monster/Crawl/frame0014.png" id="16_bx1xr"]
+[ext_resource type="AudioStream" uid="uid://ckotgximvjxq0" path="res://Sounds/scary_strings1.wav" id="18_5xdhn"]
+[ext_resource type="AudioStream" uid="uid://ckmrhc1orxn4h" path="res://Sounds/scary_strings2.wav" id="19_4jyny"]
+[ext_resource type="AudioStream" uid="uid://wq8wgu82klgi" path="res://Sounds/scary_strings3.wav" id="20_vh8xy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tk7xo"]
+shader = ExtResource("2_tk7xo")
+shader_parameter/outline_radius = 1
+shader_parameter/outline_size = 1.0
+shader_parameter/outline_color = Vector4(0, 0, 0, 1)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_n85mp"]
 animations = [{
@@ -73,10 +83,14 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1f0kj"]
 size = Vector2(42.201836, 84.40367)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hgeoe"]
+size = Vector2(89.85507, 221.73912)
+
 [node name="Enemy" type="Node2D"]
 scale = Vector2(0.69, 0.69)
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["Enemy"]]
+material = SubResource("ShaderMaterial_tk7xo")
 rotation = -1.5707964
 script = ExtResource("1_1f0kj")
 
@@ -87,15 +101,39 @@ animation = &"crawl"
 frame_progress = 0.45410618
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(0.9174312, 20.183485)
+position = Vector2(0.9174311, 20.183485)
 shape = SubResource("RectangleShape2D_1f0kj")
+disabled = true
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="CharacterBody2D"]
+target_desired_distance = 60.0
 avoidance_enabled = true
 radius = 35.0
+debug_enabled = true
 
 [node name="RayCast2D" type="RayCast2D" parent="CharacterBody2D"]
 target_position = Vector2(-8.100642e-06, 185.32109)
 
 [node name="PlayerCast" type="RayCast2D" parent="CharacterBody2D"]
 target_position = Vector2(0, 300)
+
+[node name="HurtBox" type="Area2D" parent="CharacterBody2D" groups=["Enemy"]]
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/HurtBox"]
+position = Vector2(1.203647e-06, -28.26087)
+shape = SubResource("RectangleShape2D_hgeoe")
+debug_color = Color(0.9811583, 0, 0.37754264, 0.41960785)
+
+[node name="Strings1" type="AudioStreamPlayer2D" parent="CharacterBody2D"]
+rotation = 1.5707964
+stream = ExtResource("18_5xdhn")
+
+[node name="Strings2" type="AudioStreamPlayer2D" parent="CharacterBody2D"]
+rotation = 1.5707964
+stream = ExtResource("19_4jyny")
+
+[node name="Strings3" type="AudioStreamPlayer2D" parent="CharacterBody2D"]
+rotation = 1.5707964
+stream = ExtResource("20_vh8xy")

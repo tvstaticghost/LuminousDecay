@@ -1,6 +1,7 @@
 extends Node
 
 @export var bullet_amount: int = 7
+var max_bullets: int = 7
 
 func _ready() -> void:
 	SignalManager.gun_fired.connect(shot_fired)

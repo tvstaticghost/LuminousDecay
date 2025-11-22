@@ -1,5 +1,6 @@
 extends Control
 
+@onready var key: TextureRect = $Bag/Key
 @onready var security_card: TextureRect = $Bag/SecurityCard
 @onready var bag: Panel = $Bag
 
