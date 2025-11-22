@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://cogjo0m1m0jbf"]
+
+[ext_resource type="Texture2D" uid="uid://cm5yhev2jouih" path="res://Sprites/Office/officedesk.png" id="1_65hi6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7febs"]
+size = Vector2(774, 443)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6j06h"]
+size = Vector2(233, 492)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g362s"]
+size = Vector2(368, 205)
+
+[node name="OfficeDesk" type="StaticBody2D"]
+scale = Vector2(0.355, 0.355)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_65hi6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(178, 135.5)
+shape = SubResource("RectangleShape2D_7febs")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-327.5, 111)
+shape = SubResource("RectangleShape2D_6j06h")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(136, -190.5)
+shape = SubResource("RectangleShape2D_g362s")

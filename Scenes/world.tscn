@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ci2cieaa5igml"]
+[gd_scene load_steps=8 format=3 uid="uid://ci2cieaa5igml"]
 
 [ext_resource type="PackedScene" uid="uid://bforgoj2lge6h" path="res://Scenes/test_floor.tscn" id="1_go701"]
 [ext_resource type="Script" uid="uid://dpjnqetft3fq3" path="res://Scripts/world.gd" id="1_o06y3"]
@@ -8,13 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://deq006c01sp0e" path="res://Scenes/map.tscn" id="5_fo5ed"]
 [ext_resource type="PackedScene" uid="uid://duti5tu0upko4" path="res://Scenes/darkness_bar.tscn" id="6_5ukr8"]
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_go701"]
-vertices = PackedVector2Array(-1017.71094, 2277.711, -487.47656, 2273.3438, -508.7578, 2398.9922, -1012.28125, 2949.0469, -470.9297, 2949.9375, -469.9297, 2415.7813, -217.65625, 2385.3906, -242, 2417.2188, 657.0781, 2763.1797, 672.8594, 3267.3594, 516.3672, 3264.6016, 511.3672, 2991.1016, 469.53125, 2764.2031, -234, 2988.8984, -234, 2770.4922, 444.3672, 2760.4766, 480.46094, 2497.7031, 441.6172, 2506, -350.09375, 2031.7031, -351.89844, 1365.3984, 189.34375, 1371.6016, 190.35156, 1472.2578, 189.46094, 1490.4922, 2964.1484, 1753.1094, 2968.8438, 2791.6719, 2161, 2784.3125, 2161, 2512.1719, 2155.789, 1755.8828, 2152.7969, 2270.8125, 1084, 2506.8281, 642.21094, 2279.1797, 1968.3906, 1365.1094, 1969.5938, 1471.9219, 970.96094, 1469.9297, 859.8672, 1368.8828, 857.8672, 1928.6172, 979.0078, 1744.8906, 1084, 2785.4063, 1952, 2775.3984, 1952, 2995.1172, 878.78906, 2998.8672, 877.1875, 2719.5313, 1040.4375, 2712.6094, 1049.6406, 2519.3672, 393.89844, 2283.8281, 212.65625, 1082.0781, 213.64844, 1184.1016, -393.0625, 1185.8906, -393.9297, 709.84375, 212.40625, 707.1406, 225.42188, 1024.4219, 671.5, 1081.0469, 613.9922, 1081.1797, 409.04688, 1081.6406, 375.4375, 1022.5703, 658.8594, 1035, 718.7969, 1072.1797, -218.64063, 2286.8203, 1909.3125, 1747.9609, 1957.25, 1783.7422, 1961.4688, 2064.4375, 841.3281, 2078.5625, 839.3203, 1971.7969, 619.21094, 1924.3906, 622.7422, 1979.2578, 829.21875, 723.8594, 1811.75, 719.9297, 1812.8672, 1020.3594, 1528.4609, 1023.3594, 822.21875, 1035, 1526.4609, 1173, 823, 1080.2109, 823, 1173, -242, 2506, 396.10156, 1493.5078, 390.3672, 1470.75, 96.859375, 96.88281, 934.2578, 94.109375, 937.72656, 546.46875, 646.0781, 550.4922, 95.13281, 557.6328, 369.5625, 562.6172, 722.46094, 1082.4375, 182.4375, 2027.2813)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 3, 2, 5), PackedInt32Array(5, 2, 6, 7), PackedInt32Array(8, 9, 10, 11), PackedInt32Array(12, 8, 11, 13, 14), PackedInt32Array(12, 14, 15), PackedInt32Array(16, 12, 15, 17), PackedInt32Array(18, 19, 20, 21, 22), PackedInt32Array(23, 24, 25, 26), PackedInt32Array(27, 23, 26, 28), PackedInt32Array(28, 26, 29, 30), PackedInt32Array(31, 32, 33, 34), PackedInt32Array(35, 34, 33, 36), PackedInt32Array(37, 38, 39, 40), PackedInt32Array(37, 40, 41, 42), PackedInt32Array(29, 37, 42, 43), PackedInt32Array(30, 29, 43, 16, 44), PackedInt32Array(45, 46, 47, 48), PackedInt32Array(45, 48, 49, 50), PackedInt32Array(51, 52, 53, 45, 50, 54, 55, 56), PackedInt32Array(17, 6, 57, 44, 16), PackedInt32Array(35, 36, 58, 59, 60, 61, 62), PackedInt32Array(63, 35, 62, 64), PackedInt32Array(65, 66, 67, 68), PackedInt32Array(69, 65, 68, 70, 71), PackedInt32Array(70, 72, 71), PackedInt32Array(17, 73, 7, 6), PackedInt32Array(64, 30, 44, 74), PackedInt32Array(63, 64, 74), PackedInt32Array(53, 52, 63, 74, 75), PackedInt32Array(76, 77, 78, 79, 80), PackedInt32Array(81, 80, 79), PackedInt32Array(81, 79, 55, 54), PackedInt32Array(69, 71, 82, 56), PackedInt32Array(55, 69, 56), PackedInt32Array(75, 74, 22, 21), PackedInt32Array(18, 22, 83)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(62, 62, 60, 592, 335, 597, 340, 988, 259, 989, 246, 672, -429, 675, -428, 1221, 249, 1219, 248, 1117, 696, 1116, 682, 585, 973, 581, 969, 59), PackedVector2Array(698, 1118, 788, 1116, 788, 1208, 1561, 1208, 1563, 1058, 1848, 1055, 1846, 517, 1798, 517, 1796, 685, 795, 689, 788, 1000, 656, 1000), PackedVector2Array(374, 1082, 357, 1436, 225, 1437, 224, 1337, -387, 1330, -385, 2067, 217, 2062, 224, 1526, 361, 1528, 359, 2249, -254, 2252, -253, 2352, -467, 2362, -446, 2238, -1053, 2243, -1047, 2984, -436, 2985, -435, 2451, -277, 2452, -277, 2541, 407, 2541, 409, 2726, -269, 2736, -269, 3278, -208, 3278, -201, 3024, 477, 3026, 482, 3299, 709, 3303, 691, 2728, 506, 2729, 514, 2534, 1013, 2553, 1007, 2679, 842, 2686, 844, 3034, 1987, 3030, 1987, 2740, 1119, 2750, 1119, 2542, 2126, 2547, 2126, 2819, 3004, 2827, 2999, 1718, 2121, 1721, 2118, 2236, 675, 2244, 660, 2013, 805, 2008, 807, 2114, 1997, 2099, 1992, 1766, 1921, 1713, 1013, 1710, 1007, 1505, 2005, 1507, 2003, 1330, 825, 1334, 823, 1893, 654, 1890, 649, 1082)])
-cell_size = 16.0
-agent_radius = 35.0
-
 [node name="World" type="Node2D"]
 script = ExtResource("1_o06y3")
 
@@ -22,9 +15,6 @@ script = ExtResource("1_o06y3")
 
 [node name="Player" parent="." instance=ExtResource("2_5a7ea")]
 position = Vector2(804, 474)
-
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-navigation_polygon = SubResource("NavigationPolygon_go701")
 
 [node name="Enemy" parent="." instance=ExtResource("3_5a7ea")]
 position = Vector2(150, 149)
@@ -46,3 +36,32 @@ visible = false
 
 [node name="ReloadScene" parent="CanvasLayer" instance=ExtResource("4_8j60k")]
 visible = false
+
+[node name="EnemySpawnPoints" type="Node" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="EnemySpawnPoints"]
+position = Vector2(574, 3266)
+
+[node name="Marker2D2" type="Marker2D" parent="EnemySpawnPoints"]
+position = Vector2(1908, 2890)
+
+[node name="Marker2D3" type="Marker2D" parent="EnemySpawnPoints"]
+position = Vector2(2519, 2465)
+
+[node name="Marker2D4" type="Marker2D" parent="EnemySpawnPoints"]
+position = Vector2(524, 2403)
+
+[node name="Marker2D5" type="Marker2D" parent="EnemySpawnPoints"]
+position = Vector2(892, 1427)
+
+[node name="Marker2D6" type="Marker2D" parent="EnemySpawnPoints"]
+position = Vector2(102, 1493)
+
+[node name="Marker2D7" type="Marker2D" parent="EnemySpawnPoints"]
+position = Vector2(-105, 905)
+
+[node name="Marker2D8" type="Marker2D" parent="EnemySpawnPoints"]
+position = Vector2(494, 260)
+
+[node name="Marker2D9" type="Marker2D" parent="EnemySpawnPoints"]
+position = Vector2(1222, 1132)

@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://do7ef4gpl7385"]
+
+[ext_resource type="Texture2D" uid="uid://ct4htcexqaro8" path="res://Sprites/Kitchen/kitchentable.png" id="1_ficcv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ficcv"]
+radius = 190.02368
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g35tm"]
+radius = 81.154175
+
+[node name="KitchenTable" type="StaticBody2D"]
+scale = Vector2(0.605, 0.605)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ficcv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, -5)
+shape = SubResource("CircleShape2D_ficcv")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-177, -159)
+shape = SubResource("CircleShape2D_g35tm")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(144, -170)
+shape = SubResource("CircleShape2D_g35tm")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
+position = Vector2(147, 148)
+shape = SubResource("CircleShape2D_g35tm")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="."]
+position = Vector2(-152, 144)
+shape = SubResource("CircleShape2D_g35tm")

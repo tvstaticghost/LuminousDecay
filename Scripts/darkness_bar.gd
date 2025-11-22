@@ -7,6 +7,7 @@ extends Control
 func _ready() -> void:
 	SignalManager.update_bar.connect(change_bar)
 	SignalManager.gun_fired.connect(shot_fired)
+	SignalManager.bullet_added.connect(added_bullet)
 	
 	ammo_label.text = str(BulletManager.bullet_amount) + "/" + str(BulletManager.max_bullets)
 	
@@ -15,4 +16,7 @@ func change_bar(amount: float):
 	print('Bar Progress: %d' % progress_bar.value)
 
 func shot_fired(_direction: Vector2):
+	ammo_label.text = str(BulletManager.bullet_amount) + "/" + str(BulletManager.max_bullets)
+
+func added_bullet():
 	ammo_label.text = str(BulletManager.bullet_amount) + "/" + str(BulletManager.max_bullets)
