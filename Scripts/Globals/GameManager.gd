@@ -16,6 +16,7 @@ var game_over: bool = false
 func _ready() -> void:
 	SignalManager.player_attacked.connect(increase_darkness)
 	SignalManager.player_safe.connect(stop_dealing_darkness)
+	SignalManager.world_scene_loaded.connect(start_grad_timer)
 	
 	darkness_timer = Timer.new()
 	darkness_timer.wait_time = darkness_timer_duration
@@ -25,10 +26,13 @@ func _ready() -> void:
 	
 	gradual_timer = Timer.new()
 	gradual_timer.wait_time = 5
-	gradual_timer.autostart = true
 	gradual_timer.one_shot = false
 	add_child(gradual_timer)
 	gradual_timer.timeout.connect(_on_gradual_timer_timeout)
+	
+func start_grad_timer():
+	print('Start this mother fucking timer')
+	gradual_timer.start()
 	
 func increase_darkness():
 	print('enemy deals damage - game manager called to increase darkness')
@@ -65,6 +69,7 @@ func _on_darkness_timer_timeout():
 	darkness_timer.start()
 
 func _on_gradual_timer_timeout():
+	gradual_timer.start()
 	print("gradual timeout!")
 	SignalManager.update_bar.emit(gradual_amount)
 	take_damage(gradual_amount)

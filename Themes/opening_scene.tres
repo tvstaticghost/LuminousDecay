@@ -1,0 +1,27 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://faqu8ykvf48y"]
+
+[ext_resource type="FontFile" uid="uid://c2co8l7esnbmo" path="res://Fonts/VT323-Regular.ttf" id="1_xlefe"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gfe25"]
+bg_color = Color(0.101960786, 0.23921569, 0.39215687, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ktlq"]
+bg_color = Color(0.11372549, 0.32941177, 0.42352942, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[resource]
+Button/font_sizes/font_size = 50
+Button/fonts/font = ExtResource("1_xlefe")
+Button/styles/hover = SubResource("StyleBoxFlat_gfe25")
+Button/styles/hover_mirrored = SubResource("StyleBoxFlat_gfe25")
+Button/styles/hover_pressed = SubResource("StyleBoxFlat_gfe25")
+Button/styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_gfe25")
+Button/styles/normal = SubResource("StyleBoxFlat_3ktlq")
+Button/styles/pressed = SubResource("StyleBoxFlat_3ktlq")

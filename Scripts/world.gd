@@ -3,7 +3,7 @@ extends Node2D
 @onready var color_rect: ColorRect = $CanvasLayer/ColorRect
 
 @onready var enemy_spawn_points: Node = $EnemySpawnPoints
-
+var spawn_points = []
 
 var starting_level: float = 0.4
 var current_darkness_level: float
@@ -15,10 +15,11 @@ func _ready() -> void:
 	SignalManager.darken_screen.connect(darken)
 	
 	generate_enemy_spawn_location_list()
+	SignalManager.world_scene_loaded.emit()
 	
 func generate_enemy_spawn_location_list():
 	for point in enemy_spawn_points.get_children():
-		print(point)
+		spawn_points.append(point.global_position)
 	
 func darken(amount: float):
 	# Increase darkness

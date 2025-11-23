@@ -8,3 +8,4 @@ signal player_safe
 signal update_bar(amount: float)
 signal darken_screen(amount: float)
 signal bullet_added
+signal world_scene_loaded

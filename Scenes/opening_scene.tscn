@@ -1,0 +1,84 @@
+[gd_scene load_steps=6 format=3 uid="uid://bifgebmi22lr"]
+
+[ext_resource type="Script" uid="uid://rt18hi5e8016" path="res://Scripts/opening_scene.gd" id="1_00wqr"]
+[ext_resource type="Texture2D" uid="uid://xo6kekh1eqwr" path="res://Sprites/Misc/lightbulb.png" id="1_3ktlq"]
+[ext_resource type="Theme" uid="uid://faqu8ykvf48y" path="res://Themes/opening_scene.tres" id="2_gfe25"]
+
+[sub_resource type="Gradient" id="Gradient_3ktlq"]
+offsets = PackedFloat32Array(0.38666666, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gfe25"]
+gradient = SubResource("Gradient_3ktlq")
+fill = 1
+fill_from = Vector2(0.49532712, 0.5046729)
+fill_to = Vector2(0.89719623, 0.21495327)
+
+[node name="OpeningScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_00wqr")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.08468992, 0.08468992, 0.08468992, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -588.0
+offset_top = 37.0
+offset_right = -257.0
+offset_bottom = 629.0
+grow_horizontal = 0
+grow_vertical = 2
+rotation = -1.5707964
+texture = ExtResource("1_3ktlq")
+
+[node name="PointLight2D" type="PointLight2D" parent="TextureRect"]
+position = Vector2(171.99998, 182.00002)
+scale = Vector2(6.1183314, 6.552686)
+energy = 3.49
+texture = SubResource("GradientTexture2D_gfe25")
+
+[node name="QuitButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 60.0
+offset_top = -114.0
+offset_right = 298.555
+offset_bottom = -54.0
+grow_vertical = 0
+theme = ExtResource("2_gfe25")
+text = "Quit Game"
+
+[node name="StartButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 60.0
+offset_top = -197.755
+offset_right = 298.555
+offset_bottom = -137.75443
+grow_vertical = 0
+theme = ExtResource("2_gfe25")
+text = "Start Game"
+
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
