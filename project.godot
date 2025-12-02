@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="LuminousDecay"
-run/main_scene="uid://ci2cieaa5igml"
+run/main_scene="uid://bifgebmi22lr"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://icon.svg"
 
@@ -35,6 +35,8 @@ PlayerBody=""
 Enemy=""
 Walls=""
 InventoryItem=""
+ManagerDoor=""
+LabDoor=""
 
 [input]
 

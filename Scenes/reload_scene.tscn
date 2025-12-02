@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://iwkao0c1r5wu"]
+[gd_scene load_steps=9 format=3 uid="uid://iwkao0c1r5wu"]
 
 [ext_resource type="Script" uid="uid://0f6g6kqjtnxl" path="res://Scripts/reload_scene.gd" id="1_eq0wc"]
 [ext_resource type="Texture2D" uid="uid://b7xbokkkl6r5b" path="res://Sprites/GunSprites/gunmagfull.png" id="1_ksytw"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://d0lem37t8p7bu" path="res://Sprites/GunSprites/gunmagempty.png" id="2_bshs3"]
 [ext_resource type="Texture2D" uid="uid://3l7gmbguoii0" path="res://Sprites/GunSprites/bulletbox.png" id="2_evfvu"]
 [ext_resource type="Texture2D" uid="uid://dqlv72bouve05" path="res://Sprites/Misc/new_bullet.png" id="6_vwr4l"]
+[ext_resource type="FontFile" uid="uid://c2co8l7esnbmo" path="res://Fonts/VT323-Regular.ttf" id="7_vwr4l"]
+[ext_resource type="AudioStream" uid="uid://hykytdeohkt5" path="res://Sounds/bullet_clip.mp3" id="8_su7dl"]
 
 [node name="ReloadScene" type="Control"]
 layout_mode = 3
@@ -114,6 +116,29 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 0.01429379
 offset_top = -2.7480497
+
+[node name="Label10" type="Label" parent="Panel"]
+z_index = 3
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -256.51947
+offset_top = -90.85712
+offset_right = 259.48053
+offset_bottom = -28.857117
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("7_vwr4l")
+theme_override_font_sizes/font_size = 33
+text = "Drag and drop bullets into the magazine"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BulletSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_su7dl")
 
 [connection signal="button_down" from="Panel/AmmoBox/Bullet/Button1" to="." method="_on_button_1_button_down"]
 [connection signal="button_up" from="Panel/AmmoBox/Bullet/Button1" to="." method="_on_button_1_button_up"]

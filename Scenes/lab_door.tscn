@@ -1,0 +1,212 @@
+[gd_scene load_steps=13 format=3 uid="uid://ci0j28efeolg8"]
+
+[ext_resource type="Script" uid="uid://dek8qjtwsv5ba" path="res://Scripts/lab_door.gd" id="1_erfmm"]
+[ext_resource type="Texture2D" uid="uid://b2ujjkfyox7wo" path="res://Sprites/Misc/door.png" id="2_vq0lu"]
+[ext_resource type="Texture2D" uid="uid://b4nw0ocajyeo7" path="res://Sprites/Misc/doorhandle.png" id="3_m24ao"]
+[ext_resource type="AudioStream" uid="uid://ddo7w7pmnrkqp" path="res://Sounds/door_open.mp3" id="4_8oggw"]
+[ext_resource type="AudioStream" uid="uid://6mgvmj70y5gd" path="res://Sounds/door_close.mp3" id="5_b3f83"]
+[ext_resource type="AudioStream" uid="uid://dw8kgr1ct5o37" path="res://Sounds/door_locked.wav" id="6_vq0lu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p0e35"]
+size = Vector2(29, 160)
+
+[sub_resource type="Animation" id="Animation_ab4ky"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PivotPoint:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PivotPoint/DoorObject/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_a43ba"]
+resource_name = "door_close"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PivotPoint:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.4835298, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PivotPoint/DoorObject/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.03333333, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DoorClosePlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_fahql"]
+resource_name = "door_open"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PivotPoint:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.4835298]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PivotPoint/DoorObject/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.03333333, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_m24ao"]
+resource_name = "door_locked"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35000002, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.008726646, 0.0, -0.008726646, 0.0, 0.008726646, 0.0, -0.008726646, 0.0]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DoorLockedSound")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.2842563,
+"start_offset": 0.0,
+"stream": ExtResource("6_vq0lu")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a43ba"]
+_data = {
+&"RESET": SubResource("Animation_ab4ky"),
+&"door_close": SubResource("Animation_a43ba"),
+&"door_locked": SubResource("Animation_m24ao"),
+&"door_open": SubResource("Animation_fahql")
+}
+
+[node name="LabDoor" type="Node2D"]
+script = ExtResource("1_erfmm")
+
+[node name="PivotPoint" type="Marker2D" parent="."]
+
+[node name="DoorObject" type="StaticBody2D" parent="PivotPoint" groups=["LabDoor"]]
+
+[node name="DoorSprite" type="Sprite2D" parent="PivotPoint/DoorObject"]
+position = Vector2(3, 74)
+texture = ExtResource("2_vq0lu")
+
+[node name="DoorHandle" type="Sprite2D" parent="PivotPoint/DoorObject/DoorSprite"]
+position = Vector2(5.000004, 44.999996)
+rotation = -1.5707964
+scale = Vector2(0.1075, 0.1425)
+texture = ExtResource("3_m24ao")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PivotPoint/DoorObject"]
+position = Vector2(5.5, 74)
+shape = SubResource("RectangleShape2D_p0e35")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_a43ba")
+}
+
+[node name="DoorTimer" type="Timer" parent="."]
+wait_time = 0.3
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_8oggw")
+
+[node name="DoorClosePlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_b3f83")
+
+[node name="DoorLockedSound" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="timeout" from="DoorTimer" to="." method="_on_door_timer_timeout"]

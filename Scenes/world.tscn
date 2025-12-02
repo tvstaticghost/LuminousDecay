@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ci2cieaa5igml"]
+[gd_scene load_steps=13 format=3 uid="uid://ci2cieaa5igml"]
 
 [ext_resource type="PackedScene" uid="uid://bforgoj2lge6h" path="res://Scenes/test_floor.tscn" id="1_go701"]
 [ext_resource type="Script" uid="uid://dpjnqetft3fq3" path="res://Scripts/world.gd" id="1_o06y3"]
@@ -6,6 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://iwkao0c1r5wu" path="res://Scenes/reload_scene.tscn" id="4_8j60k"]
 [ext_resource type="PackedScene" uid="uid://deq006c01sp0e" path="res://Scenes/map.tscn" id="5_fo5ed"]
 [ext_resource type="PackedScene" uid="uid://duti5tu0upko4" path="res://Scenes/darkness_bar.tscn" id="6_5ukr8"]
+[ext_resource type="PackedScene" uid="uid://dpok5igd7ffst" path="res://Scenes/microscope.tscn" id="7_o06y3"]
+[ext_resource type="PackedScene" uid="uid://c3tfom1j25mav" path="res://Scenes/number_lock.tscn" id="8_5v1tr"]
+[ext_resource type="PackedScene" uid="uid://b5c1grdk0buqu" path="res://Scenes/manager_door.tscn" id="8_k7acu"]
+[ext_resource type="PackedScene" uid="uid://ci0j28efeolg8" path="res://Scenes/lab_door.tscn" id="10_0fj1v"]
+[ext_resource type="PackedScene" uid="uid://b0a8gj5ua547s" path="res://Scenes/enemy.tscn" id="11_ikia7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0fj1v"]
+size = Vector2(407, 323)
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_o06y3")
@@ -13,7 +21,7 @@ script = ExtResource("1_o06y3")
 [node name="TestFloor" parent="." instance=ExtResource("1_go701")]
 
 [node name="Player" parent="." instance=ExtResource("2_5a7ea")]
-position = Vector2(804, 474)
+position = Vector2(511, 243)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -31,6 +39,12 @@ color = Color(0, 0, 0, 0.3137255)
 visible = false
 
 [node name="ReloadScene" parent="CanvasLayer" instance=ExtResource("4_8j60k")]
+visible = false
+
+[node name="Microscope" parent="CanvasLayer" instance=ExtResource("7_o06y3")]
+visible = false
+
+[node name="NumberLock" parent="CanvasLayer" instance=ExtResource("8_5v1tr")]
 visible = false
 
 [node name="EnemySpawnPoints" type="Node" parent="."]
@@ -61,3 +75,27 @@ position = Vector2(494, 260)
 
 [node name="Marker2D9" type="Marker2D" parent="EnemySpawnPoints"]
 position = Vector2(1222, 1132)
+
+[node name="ManagerDoor" parent="." instance=ExtResource("8_k7acu")]
+position = Vector2(-352, 2342)
+locked = true
+
+[node name="LabDoor" parent="." instance=ExtResource("10_0fj1v")]
+position = Vector2(289, 982)
+
+[node name="MonsterSpawnTimer" type="Timer" parent="."]
+wait_time = 15.0
+autostart = true
+
+[node name="WinningArea" type="Area2D" parent="."]
+position = Vector2(-113, 944)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WinningArea"]
+position = Vector2(41.5, 8.5)
+shape = SubResource("RectangleShape2D_0fj1v")
+
+[node name="Enemy" parent="." instance=ExtResource("11_ikia7")]
+position = Vector2(264, 245)
+
+[connection signal="timeout" from="MonsterSpawnTimer" to="." method="_on_monster_spawn_timer_timeout"]
+[connection signal="body_entered" from="WinningArea" to="." method="_on_winning_area_body_entered"]

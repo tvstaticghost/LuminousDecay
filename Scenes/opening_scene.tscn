@@ -1,15 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://bifgebmi22lr"]
+[gd_scene load_steps=7 format=3 uid="uid://bifgebmi22lr"]
 
 [ext_resource type="Script" uid="uid://rt18hi5e8016" path="res://Scripts/opening_scene.gd" id="1_00wqr"]
 [ext_resource type="Texture2D" uid="uid://xo6kekh1eqwr" path="res://Sprites/Misc/lightbulb.png" id="1_3ktlq"]
 [ext_resource type="Theme" uid="uid://faqu8ykvf48y" path="res://Themes/opening_scene.tres" id="2_gfe25"]
+[ext_resource type="FontFile" uid="uid://c2co8l7esnbmo" path="res://Fonts/VT323-Regular.ttf" id="4_2pc80"]
 
-[sub_resource type="Gradient" id="Gradient_3ktlq"]
+[sub_resource type="Gradient" id="Gradient_sfksp"]
 offsets = PackedFloat32Array(0.38666666, 1)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_gfe25"]
-gradient = SubResource("Gradient_3ktlq")
+gradient = SubResource("Gradient_sfksp")
 fill = 1
 fill_from = Vector2(0.49532712, 0.5046729)
 fill_to = Vector2(0.89719623, 0.21495327)
@@ -79,6 +80,20 @@ offset_bottom = -137.75443
 grow_vertical = 0
 theme = ExtResource("2_gfe25")
 text = "Start Game"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 478.0
+offset_top = 228.0
+offset_right = 1236.0
+offset_bottom = 698.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_2pc80")
+theme_override_font_sizes/font_size = 120
+text = "Luminous
+Decay"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

@@ -4,7 +4,7 @@ extends CharacterBody2D
 @onready var enemy_visuals: AnimatedSprite2D = $EnemyVisuals
 @onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
 @export var movement_speed = 70
-@export var vision_distance: float = 270
+@export var vision_distance: float = 300
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 
 @onready var strings_1: AudioStreamPlayer2D = $Strings1
@@ -16,6 +16,12 @@ var enemy_revealed: bool = false
 const BLOOD_1 = preload("uid://dj53uxso6b8db")
 const BLOOD_2 = preload("uid://cwvcam8ihn1ab")
 const BLOOD_3 = preload("uid://fxgm1svx17yj")
+
+@onready var slap_1: AudioStreamPlayer2D = $Slap1
+@onready var slap_2: AudioStreamPlayer2D = $Slap2
+@onready var slap_3: AudioStreamPlayer2D = $Slap3
+
+var slap_list = []
 
 var blood_list = [BLOOD_1, BLOOD_2, BLOOD_3]
 var ending_scale
@@ -33,7 +39,9 @@ func _ready() -> void:
 	strings_list.append(strings_3)
 	print(strings_list)
 	
-	ending_scale = Vector2(0.15, 0.15)
+	slap_list = [slap_1, slap_2, slap_3]
+	
+	ending_scale = Vector2(0.25, 0.25)
 	var player_root = get_tree().get_nodes_in_group("Player")[0]
 	player = player_root.get_child(0)
 	target = player.get_player_pos()
@@ -85,34 +93,49 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 	
 func spawn_blood(direction: Vector2):
-	var blood_inst = blood_list[randi_range(0, len(blood_list) - 1)]
-	var blood_object = blood_inst.instantiate()
-	get_tree().get_root().add_child(blood_object)
-	blood_object.global_position = global_position
-	blood_object.z_index = 2
-	blood_object.scale = Vector2(0.01, 0.01)
-	
-	var dir = direction.rotated(deg_to_rad(90))
-	var target_pos = blood_object.global_position + dir * 20
-	var tween = get_tree().create_tween()
-	tween.tween_property(
-		blood_object,
-		"global_position",
-		target_pos,
-		0.2 # change value to make it faster or slower
-	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-	
-	tween.tween_property(
-		blood_object,
-		"scale",
-		ending_scale, # final size
-		0.15
-	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-	
-	blood_object.rotation = (-dir).angle() + randf_range(-0.4, 0.4)
-	
+	for i in range(0, 1):
+		var blood_inst = blood_list[randi_range(0, len(blood_list) - 1)]
+		var blood_object = blood_inst.instantiate()
+		get_tree().get_root().add_child(blood_object)
+		blood_object.global_position = global_position
+		blood_object.z_index = 1
+		blood_object.scale = Vector2(0.01, 0.01)
+		
+		var dir = direction.rotated(deg_to_rad(90))
+		var target_pos = blood_object.global_position + dir * 20
+		var tween = get_tree().create_tween()
+		tween.tween_property(
+			blood_object,
+			"global_position",
+			target_pos,
+			0.2 # change value to make it faster or slower
+		).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+		
+		tween.tween_property(
+			blood_object,
+			"scale",
+			ending_scale, # final size
+			0.15
+		).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+		
+		blood_object.rotation = (-dir).angle() + randf_range(-0.4, 0.4)
+
+#TODO fix this logic	
 func die():
 	print('Enemy died')
+	if BulletManager.bullets_in_inventory < 3:
+		SignalManager.update_interact_temp_text.emit("You gained 5 bullets")
+		SignalManager.extra_ammo.emit()
+	else:
+		var choice = randi_range(0, 1)
+		if choice == 1:
+			print("EXTRA AMMO")
+			SignalManager.update_interact_temp_text.emit("You gained 5 bullets")
+			SignalManager.extra_ammo.emit()
+		else:
+			print("EXTRA TIME")
+			SignalManager.update_interact_temp_text.emit("Light intensity has increased")
+			SignalManager.extra_time.emit()
 	queue_free() #Change this to a death animation and disable collisions
 
 func take_damage(amount: int):
@@ -121,3 +144,9 @@ func take_damage(amount: int):
 		
 	if health <= 0:
 		die()
+
+
+func _on_enemy_visuals_frame_changed() -> void:
+	if enemy_visuals.animation == "crawl":
+		if enemy_visuals.frame == 2 or enemy_visuals.frame == 6 or enemy_visuals.frame == 9:
+			slap_list[randi_range(0, len(slap_list) - 1)].play()

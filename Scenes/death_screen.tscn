@@ -1,0 +1,105 @@
+[gd_scene load_steps=7 format=3 uid="uid://cgucroe37lqjm"]
+
+[ext_resource type="Texture2D" uid="uid://xo6kekh1eqwr" path="res://Sprites/Misc/lightbulb.png" id="1_8hps1"]
+[ext_resource type="Script" uid="uid://box6xu4ubjrsw" path="res://Scripts/death_screen.gd" id="1_rwas2"]
+[ext_resource type="Theme" uid="uid://faqu8ykvf48y" path="res://Themes/opening_scene.tres" id="3_tseak"]
+[ext_resource type="FontFile" uid="uid://c2co8l7esnbmo" path="res://Fonts/VT323-Regular.ttf" id="4_amiou"]
+
+[sub_resource type="Gradient" id="Gradient_3ktlq"]
+offsets = PackedFloat32Array(0.38666666, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rwas2"]
+gradient = SubResource("Gradient_3ktlq")
+fill = 1
+fill_from = Vector2(0.49532712, 0.5046729)
+fill_to = Vector2(0.89719623, 0.21495327)
+
+[node name="DeathScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rwas2")
+starting_enery = 2.74
+energy_step_amount = 0.555
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.08627451, 0.08627451, 0.08627451, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -588.0
+offset_top = 37.0
+offset_right = -257.0
+offset_bottom = 629.0
+grow_horizontal = 0
+grow_vertical = 2
+rotation = -1.5707964
+texture = ExtResource("1_8hps1")
+
+[node name="PointLight2D" type="PointLight2D" parent="TextureRect"]
+position = Vector2(171.99998, 182.00002)
+scale = Vector2(6.1183314, 6.552686)
+texture = SubResource("GradientTexture2D_rwas2")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[node name="QuitButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 454.0
+offset_top = -115.244995
+offset_right = 692.5553
+offset_bottom = -55.244995
+grow_vertical = 0
+theme = ExtResource("3_tseak")
+text = "Quit Game"
+
+[node name="RetryButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 454.0
+offset_top = -199.0
+offset_right = 692.5553
+offset_bottom = -138.99942
+grow_vertical = 0
+theme = ExtResource("3_tseak")
+text = "Retry"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 58.0
+offset_top = 96.0
+offset_right = 314.0
+offset_bottom = 259.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_amiou")
+theme_override_font_sizes/font_size = 80
+text = "All Lumens
+Have Decayed"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="RetryButton" to="." method="_on_start_button_pressed"]

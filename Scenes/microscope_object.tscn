@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cr153a3nnmxpp"]
+
+[ext_resource type="Script" uid="uid://c3aytn3l4aye5" path="res://Scenes/microscope_object.gd" id="1_5bxju"]
+[ext_resource type="Texture2D" uid="uid://07kh87f5o7hk" path="res://Sprites/LabEquipment/microscope.png" id="1_6aqnl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5bxju"]
+size = Vector2(207.93816, 148.45357)
+
+[node name="MicroscopeObject" type="Node2D"]
+scale = Vector2(0.485, 0.485)
+script = ExtResource("1_5bxju")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_6aqnl")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(93.969124, -2.0618515)
+scale = Vector2(1.0000004, 1.0000004)
+shape = SubResource("RectangleShape2D_5bxju")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

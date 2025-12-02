@@ -6,6 +6,7 @@ extends Control
 @onready var bullet: TextureRect = $Panel/AmmoBox/Bullet
 @onready var bullet_2: TextureRect = $Panel/AmmoBox/Bullet2
 @onready var bullet_3: TextureRect = $Panel/AmmoBox/Bullet3
+@onready var bullet_sound: AudioStreamPlayer = $BulletSound
 
 var bullet_1_dragging: bool = false
 var bullet_2_dragging: bool = false
@@ -40,8 +41,15 @@ func reload():
 	visible = !visible
 	toggle_mag_sprite()
 	
+	if visible:
+		SignalManager.stop_movement.emit(false)
+		check_bullet_amounts()
+	else:
+		SignalManager.stop_movement.emit(true)
+	
 func check_bullet_amounts():
 	var amount_to_render = BulletManager.bullets_in_inventory
+	print("You currently have %d bullets in your inventory" % amount_to_render)
 	if amount_to_render >= 3:
 		bullet.visible = true
 		bullet_2.visible = true
@@ -68,6 +76,14 @@ func toggle_mag_sprite():
 		pistol_mag_2.visible = true
 		
 	print('BULLET AMOUNT %d' % BulletManager.bullet_amount)
+	
+func add_a_bullet():
+	if BulletManager.bullet_amount < 7:
+		bullet_sound.play()
+			
+		BulletManager.add_bullet_to_mag()
+		check_bullet_amounts()
+		toggle_mag_sprite()
 
 func _process(_delta: float) -> void:
 	if bullet_1_dragging:
@@ -87,9 +103,7 @@ func _on_button_1_button_down() -> void:
 func _on_button_1_button_up() -> void:
 	bullet_1_dragging = false
 	if mag_location.has_point(bullet.global_position):
-		BulletManager.add_bullet_to_mag()
-		check_bullet_amounts()
-		toggle_mag_sprite()
+		add_a_bullet()
 		
 	bullet.global_position = bullet_1_starting_position
 
@@ -100,9 +114,7 @@ func _on_button_2_button_down() -> void:
 func _on_button_2_button_up() -> void:
 	bullet_2_dragging = false
 	if mag_location.has_point(bullet_2.global_position):
-		BulletManager.add_bullet_to_mag()
-		check_bullet_amounts()
-		toggle_mag_sprite()
+		add_a_bullet()
 		
 	bullet_2.global_position = bullet_2_starting_position
 
@@ -113,8 +125,6 @@ func _on_button_3_button_down() -> void:
 func _on_button_3_button_up() -> void:
 	bullet_3_dragging = false
 	if mag_location.has_point(bullet_3.global_position):
-		BulletManager.add_bullet_to_mag()
-		check_bullet_amounts()
-		toggle_mag_sprite()
+		add_a_bullet()
 		
 	bullet_3.global_position = bullet_3_starting_position

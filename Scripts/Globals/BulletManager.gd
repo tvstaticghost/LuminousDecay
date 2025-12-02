@@ -6,6 +6,7 @@ var bullets_in_inventory: int = 7
 
 func _ready() -> void:
 	SignalManager.gun_fired.connect(shot_fired)
+	SignalManager.extra_ammo.connect(more_bullets)
 	
 func shot_fired(_direction: Vector2):
 	if bullet_amount > 0:
@@ -25,3 +26,7 @@ func add_bullet_to_mag():
 			print("You already have 7 bulletss")
 	else:
 		print("You have no bullets")
+		
+func more_bullets():
+	bullets_in_inventory += 5
+	print("You now have %d bullets in your inventory" % bullets_in_inventory)

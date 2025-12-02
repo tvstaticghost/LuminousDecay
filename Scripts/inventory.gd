@@ -8,6 +8,15 @@ var dragging := false
 var drag_offset := Vector2.ZERO
 var selected_item
 
+func _ready() -> void:
+	SignalManager.collect_note.connect(add_note)
+	
+func add_note():
+	print("Need to add note to inventory")
+	
+func add_keycard():
+	print("Need to add keycard")
+
 func _process(_delta: float) -> void:
 	if dragging:
 		var new_pos = get_global_mouse_position() + drag_offset

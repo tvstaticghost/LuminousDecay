@@ -1,0 +1,36 @@
+extends Node2D
+
+@onready var pivot_point: Marker2D = $PivotPoint
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var door_timer: Timer = $DoorTimer
+
+var can_open: bool = true
+@export var locked: bool = false
+var door_open: bool = false
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	SignalManager.unlock_manager_door.connect(unlock_door)
+	
+func unlock_door():
+	locked = false
+
+func test():
+	if !locked and can_open:
+		door_open = !door_open
+		if door_open:
+			print("opening door")
+			animation_player.play("door_open")
+		else:
+			print("closing door")
+			animation_player.play("door_close")
+		can_open = false
+		door_timer.start()
+	else:
+		print("Toggling door lock")
+		SignalManager.toggle_door_lock.emit()
+
+
+func _on_door_timer_timeout() -> void:
+	can_open = true
+	door_timer.stop()
