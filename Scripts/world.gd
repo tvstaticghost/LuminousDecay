@@ -13,7 +13,7 @@ const GAMEWIN = "res://Scenes/game_win.tscn"
 @onready var enemy_spawn_points: Node = $EnemySpawnPoints
 var spawn_points = []
 
-var starting_level: float = 0.4
+@export var starting_level: float = 0.4
 var current_darkness_level: float
 var max_level: float = 1.0
 

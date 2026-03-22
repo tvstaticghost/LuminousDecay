@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b5c1grdk0buqu"]
+[gd_scene load_steps=12 format=3 uid="uid://b5c1grdk0buqu"]
 
 [ext_resource type="Script" uid="uid://d4frhk7llw11r" path="res://Scripts/manager_door.gd" id="1_bjwxo"]
 [ext_resource type="Texture2D" uid="uid://b2ujjkfyox7wo" path="res://Sprites/Misc/door.png" id="2_67cjv"]
@@ -8,6 +8,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p0e35"]
 size = Vector2(29, 160)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_bjwxo"]
+polygon = PackedVector2Array(-9, -6, 8, -6, 8, 154, -9, 154)
 
 [sub_resource type="Animation" id="Animation_ab4ky"]
 length = 0.001
@@ -147,6 +150,9 @@ texture = ExtResource("3_j1v66")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PivotPoint/DoorObject"]
 position = Vector2(5.5, 74)
 shape = SubResource("RectangleShape2D_p0e35")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="PivotPoint/DoorObject"]
+occluder = SubResource("OccluderPolygon2D_bjwxo")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
